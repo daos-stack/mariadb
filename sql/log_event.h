@@ -483,6 +483,16 @@ class String;
 #define LOG_EVENT_IGNORABLE_F 0x80
 
 /**
+   @def LOG_EVENT_ACCEPT_OWN_F
+
+   Flag sets by the gtid-mode connected semisync slave for
+   the same server_id ("own") events which the slave must not have
+   in its state. Typically such events were never committed by
+   their originator (this server) and discared at its crash recovery
+*/
+#define LOG_EVENT_ACCEPT_OWN_F 0x4000
+
+/**
    @def LOG_EVENT_SKIP_REPLICATION_F
 
    Flag set by application creating the event (with @@skip_replication); the
