@@ -1,6 +1,6 @@
 /*
    Copyright (c) 2000, 2019, Oracle and/or its affiliates.
-   Copyright (c) 2010, 2020, MariaDB
+   Copyright (c) 2010, 2021, MariaDB
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -8158,7 +8158,8 @@ static bool mysql_inplace_alter_table(THD *thd,
                                             table_buff, sizeof(table_buff));
     if ((hton->notify_tabledef_changed)(hton, &tmp_db, &tmp_table,
                                         table->s->frm_image,
-                                        &table->s->tabledef_version))
+                                        &table->s->tabledef_version,
+                                        table->file))
     {
       my_error(HA_ERR_INCOMPATIBLE_DEFINITION, MYF(0));
       DBUG_RETURN(true);

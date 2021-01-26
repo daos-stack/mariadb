@@ -11269,6 +11269,8 @@ foreign_fail:
 							  m_prebuilt->table,
 							  table->s->table_name,
 							  *ctx0);
+		innobase_copy_frm_flags_from_table_share(
+			m_prebuilt->table, altered_table->s);
 
 		row_mysql_unlock_data_dictionary(trx);
 		trx->free();
